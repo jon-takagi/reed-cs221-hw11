@@ -2,6 +2,8 @@
  * Main file for Traveling-Salesperson solver.
  * Read a cities file in TSV format into a Cities object, then run
  * of several solver algorithms on it and output the best result.
+ *
+ * This is the only file that was changed because I didn't do the extra credit.
  */
 
 #include "cities.hh"
@@ -191,7 +193,16 @@ ga_search(const Cities& cities,
 }
 
 //////////////////////////////////////////////////////////////////////////////
-// threaded_ga_search is a multi-thread wrapper for ga_search
+// threaded_ga_search is supposed to be a multi-thread wrapper for ga_search.
+// i copied the code from above to make sure it was working correctly
+// probably could just call ga_search directly in the lambda
+// but i thought i had bugs bc of the CPU settings on my vm
+// and I don't wanna re-run everything to make sure it works with the changes.
+// if you think you have an answer
+// lock it with mutex and check again to make sure it's still good
+// then accept it.
+
+
 
 Cities::permutation_t threaded_ga_search(const Cities& cities,
           unsigned iters,
@@ -243,6 +254,7 @@ Cities::permutation_t threaded_ga_search(const Cities& cities,
 
 }
 //////////////////////////////////////////////////////////////////////////////
+// only change here is calling the threaded version :) 
 int main(int argc, char** argv)
 {
   if (argc < 4) {
